@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h1>{{ title }}</h1>
+            <a href="/crud/" class="btn btn-sm btn-primary">Listar</a>
+            <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn btn-sm btn-primary mt-3">Cadastrar</button>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

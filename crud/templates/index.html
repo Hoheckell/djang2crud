@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h1>{{ title }}</h1>
+            {% if messages %}
+                <div class="alert alert-info">
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li class="{{ message.tags }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <a href="/crud/create" class="btn btn-sm btn-primary">Novo</a>
+            <table class="table table-responsive table-striped mt-2">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if users %}
+                    {% for user in users %}
+                        <tr>
+                            <td><a href="/crud/{{ user.id }}/">{{ user.nome }}</a></td>
+                            <td>{{ user.email }}</td>
+                            <td><a href="/crud/{{ user.id }}/delete">Excluir</a></td>
+                            <td><a href="/crud/{{ user.id }}/edit">Editar</a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4">Nenhum usuário.</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
